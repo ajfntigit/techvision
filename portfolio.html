@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="description" content="Portfólio de projetos da TechVision - Conheça nossos trabalhos em desenvolvimento web, mobile e design">
     <title>Portfólio | TechVision</title>
     
@@ -34,11 +34,12 @@
         <h1 class="page-title">Nosso Portfólio</h1>
         <p class="page-subtitle">Conheça alguns dos projetos que desenvolvemos</p>
         
+        <!-- Filtros -->
         <div class="portfolio-filters">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="web">Web</button>
-            <button class="filter-btn" data-filter="mobile">Mobile</button>
-            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn active" data-filter="all">✨ Todos</button>
+            <button class="filter-btn" data-filter="web">🌐 Web</button>
+            <button class="filter-btn" data-filter="mobile">📱 Mobile</button>
+            <button class="filter-btn" data-filter="design">🎨 Design</button>
         </div>
         
         <div class="portfolio-grid">
@@ -54,7 +55,7 @@
                     </div>
                     <span class="portfolio-tag">Web Development</span>
                     <div style="text-align: center; margin-top: 1rem;">
-                        <a href="#" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                        <a href="#" onclick="showProjectDetails(event, 'ecommerce-fashion')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@
                     </div>
                     <span class="portfolio-tag">Mobile App</span>
                     <div style="text-align: center; margin-top: 1rem;">
-                        <a href="#" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                        <a href="#" onclick="showProjectDetails(event, 'fitness-tracker')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
                     </div>
                 </div>
             </div>
@@ -87,7 +88,7 @@
                     </div>
                     <span class="portfolio-tag">UI/UX Design</span>
                     <div style="text-align: center; margin-top: 1rem;">
-                        <a href="#" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                        <a href="#" onclick="showProjectDetails(event, 'design-system')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
                     </div>
                 </div>
             </div>
@@ -104,7 +105,7 @@
                     </div>
                     <span class="portfolio-tag">Web Development</span>
                     <div style="text-align: center; margin-top: 1rem;">
-                        <a href="#" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                        <a href="#" onclick="showProjectDetails(event, 'telemedicina')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
                     </div>
                 </div>
             </div>
@@ -121,7 +122,7 @@
                     </div>
                     <span class="portfolio-tag">Mobile App</span>
                     <div style="text-align: center; margin-top: 1rem;">
-                        <a href="#" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                        <a href="#" onclick="showProjectDetails(event, 'delivery-food')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
                     </div>
                 </div>
             </div>
@@ -138,12 +139,13 @@
                     </div>
                     <span class="portfolio-tag">Web Design</span>
                     <div style="text-align: center; margin-top: 1rem;">
-                        <a href="#" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                        <a href="#" onclick="showProjectDetails(event, 'gaming-landing')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- CTA ao final -->
         <div class="portfolio-cta">
             <h3>Quer um projeto como esses?</h3>
             <p>Entre em contato e vamos transformar sua ideia em realidade!</p>
@@ -174,10 +176,12 @@
             <div class="footer-column">
                 <h4>Redes Sociais</h4>
                 <div class="social-links">
-                    <a href="https://facebook.com/techvision" target="_blank">📘</a>
-                    <a href="https://twitter.com/techvision" target="_blank">🐦</a>
-                    <a href="https://instagram.com/techvision" target="_blank">📷</a>
-                    <a href="https://linkedin.com/company/techvision" target="_blank">💼</a>
+                    <a href="#" onclick="showComingSoon(event, 'Facebook')">📘</a>
+                    <a href="#" onclick="showComingSoon(event, 'Twitter')">🐦</a>
+                    <a href="#" onclick="showComingSoon(event, 'Instagram')">📷</a>
+                    <a href="#" onclick="showComingSoon(event, 'LinkedIn')">💼</a>
+                    <a href="#" onclick="showComingSoon(event, 'GitHub')">🐙</a>
+                    <a href="#" onclick="showComingSoon(event, 'YouTube')">📺</a>
                 </div>
             </div>
         </div>
