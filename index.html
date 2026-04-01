@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechVision | Home</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="TechVision - Arquitetando o Futuro com design inteligente e tecnologia de alto impacto">
+    <title>TechVision | Início</title>
+    
+    <!-- Favicon - Ícone da casa para Home -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2300d2ff'/%3E%3Ctext x='50' y='72' font-size='55' text-anchor='middle' fill='white'%3E🏠%3C/text%3E%3C/svg%3E">
+    
     <link rel="stylesheet" href="estilo.css">
-    <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body class="bg-fullscreen page-home">
 
@@ -14,25 +17,94 @@
         <a href="index.html" class="logo-link">
             <div class="logo">TECHVISION.</div>
         </a>
-        <nav>
+        
+        <!-- Botão do menu hambúrguer -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span class="hamburger"></span>
+        </button>
+        
+        <nav id="mainNav">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Início</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
+        
+        <!-- Overlay para fechar o menu ao clicar fora -->
+        <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
     <main>
-        <section class="hero" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-            <h1 style="font-size: 4rem; margin-bottom: 10px;">Arquitetando o Futuro</h1>
-            <p style="color: #888;">Design inteligente e tecnologia de alto impacto.</p>
+        <section class="hero">
+            <h1>Arquitetando o Futuro</h1>
+            <p>Design inteligente e tecnologia de alto impacto para transformar sua marca.</p>
             <div class="btn-container">
                 <a href="contato.html" class="btn-submit">Iniciar Projeto</a>
             </div>
         </section>
+
+        <section class="features">
+            <h2 class="section-title">Nossos Diferenciais</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Inovação Constante</h3>
+                    <p>Soluções que antecipam as tendências do mercado digital.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Design Imersivo</h3>
+                    <p>Experiências visuais que conectam e emocionam.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Performance</h3>
+                    <p>Tecnologia otimizada para resultados excepcionais.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer><p>&copy; 2026 TechVision Intelligence.</p></footer>
+    <footer>
+        <p>&copy; 2026 TechVision Intelligence. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Menu hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', closeMenu);
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        
+        // Fechar menu ao redimensionar para desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+    </script>
 </body>
 </html>
