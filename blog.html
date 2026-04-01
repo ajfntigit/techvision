@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="description" content="Blog da TechVision - Artigos sobre tecnologia e inovação">
     <title>Blog | TechVision</title>
     
@@ -34,8 +34,19 @@
         <h1 class="page-title">📝 Blog TechVision</h1>
         <p class="page-subtitle">Insights e tendências sobre tecnologia, design e inovação</p>
         
+        <!-- Filtros para o Blog -->
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">📚 Todos</button>
+            <button class="filter-btn" data-filter="ia">🤖 IA</button>
+            <button class="filter-btn" data-filter="design">🎨 Design</button>
+            <button class="filter-btn" data-filter="performance">⚡ Performance</button>
+            <button class="filter-btn" data-filter="cloud">☁️ Cloud</button>
+            <button class="filter-btn" data-filter="seguranca">🔒 Segurança</button>
+            <button class="filter-btn" data-filter="carreira">🚀 Carreira</button>
+        </div>
+        
         <div class="blog-grid">
-            <article class="blog-card">
+            <article class="blog-card" data-category="ia">
                 <div class="blog-image">🤖</div>
                 <div class="blog-content">
                     <span class="blog-category">Inteligência Artificial</span>
@@ -46,11 +57,11 @@
                         <span>👤 João Silva</span>
                         <span>⭐ 8 min leitura</span>
                     </div>
-                    <a href="artigo-ia.html" class="blog-link">Ler artigo completo →</a>
+                    <a href="#" onclick="showArticle(event, 'ia')" class="blog-link">Ler artigo completo →</a>
                 </div>
             </article>
             
-            <article class="blog-card">
+            <article class="blog-card" data-category="design">
                 <div class="blog-image">🎨</div>
                 <div class="blog-content">
                     <span class="blog-category">Design</span>
@@ -61,11 +72,11 @@
                         <span>👤 Maria Santos</span>
                         <span>⭐ 6 min leitura</span>
                     </div>
-                    <a href="artigo-design.html" class="blog-link">Ler artigo completo →</a>
+                    <a href="#" onclick="showArticle(event, 'design')" class="blog-link">Ler artigo completo →</a>
                 </div>
             </article>
             
-            <article class="blog-card">
+            <article class="blog-card" data-category="performance">
                 <div class="blog-image">⚡</div>
                 <div class="blog-content">
                     <span class="blog-category">Performance</span>
@@ -76,11 +87,11 @@
                         <span>👤 Pedro Costa</span>
                         <span>⭐ 5 min leitura</span>
                     </div>
-                    <a href="artigo-performance.html" class="blog-link">Ler artigo completo →</a>
+                    <a href="#" onclick="showArticle(event, 'performance')" class="blog-link">Ler artigo completo →</a>
                 </div>
             </article>
             
-            <article class="blog-card">
+            <article class="blog-card" data-category="cloud">
                 <div class="blog-image">☁️</div>
                 <div class="blog-content">
                     <span class="blog-category">Cloud</span>
@@ -91,11 +102,11 @@
                         <span>👤 Ana Oliveira</span>
                         <span>⭐ 10 min leitura</span>
                     </div>
-                    <a href="artigo-cloud.html" class="blog-link">Ler artigo completo →</a>
+                    <a href="#" onclick="showArticle(event, 'cloud')" class="blog-link">Ler artigo completo →</a>
                 </div>
             </article>
             
-            <article class="blog-card">
+            <article class="blog-card" data-category="seguranca">
                 <div class="blog-image">🔒</div>
                 <div class="blog-content">
                     <span class="blog-category">Segurança</span>
@@ -106,11 +117,11 @@
                         <span>👤 Lucas Ferreira</span>
                         <span>⭐ 7 min leitura</span>
                     </div>
-                    <a href="artigo-seguranca.html" class="blog-link">Ler artigo completo →</a>
+                    <a href="#" onclick="showArticle(event, 'seguranca')" class="blog-link">Ler artigo completo →</a>
                 </div>
             </article>
             
-            <article class="blog-card">
+            <article class="blog-card" data-category="carreira">
                 <div class="blog-image">🚀</div>
                 <div class="blog-content">
                     <span class="blog-category">Carreira</span>
@@ -121,7 +132,7 @@
                         <span>👤 Rafael Lima</span>
                         <span>⭐ 12 min leitura</span>
                     </div>
-                    <a href="artigo-carreira.html" class="blog-link">Ler artigo completo →</a>
+                    <a href="#" onclick="showArticle(event, 'carreira')" class="blog-link">Ler artigo completo →</a>
                 </div>
             </article>
         </div>
@@ -156,10 +167,12 @@
             <div class="footer-column">
                 <h4>Redes Sociais</h4>
                 <div class="social-links">
-                    <a href="https://facebook.com/techvision" target="_blank">📘</a>
-                    <a href="https://twitter.com/techvision" target="_blank">🐦</a>
-                    <a href="https://instagram.com/techvision" target="_blank">📷</a>
-                    <a href="https://linkedin.com/company/techvision" target="_blank">💼</a>
+                    <a href="#" onclick="showComingSoon(event, 'Facebook')">📘</a>
+                    <a href="#" onclick="showComingSoon(event, 'Twitter')">🐦</a>
+                    <a href="#" onclick="showComingSoon(event, 'Instagram')">📷</a>
+                    <a href="#" onclick="showComingSoon(event, 'LinkedIn')">💼</a>
+                    <a href="#" onclick="showComingSoon(event, 'GitHub')">🐙</a>
+                    <a href="#" onclick="showComingSoon(event, 'YouTube')">📺</a>
                 </div>
             </div>
         </div>
