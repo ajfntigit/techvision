@@ -6,19 +6,27 @@
     <meta name="description" content="TechVision - Arquitetando o Futuro com design inteligente e tecnologia de alto impacto">
     <title>TechVision | Início</title>
     
-    <!-- Favicon - Ícone da casa para Home -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2300d2ff'/%3E%3Ctext x='50' y='72' font-size='55' text-anchor='middle' fill='white'%3E🏠%3C/text%3E%3C/svg%3E">
     
     <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body class="bg-fullscreen page-home">
+
+    <!-- TELA DE BOAS-VINDAS -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-content">
+            <div class="welcome-logo">TECHVISION.</div>
+            <div class="welcome-title">Arquitetando o Futuro</div>
+            <div class="welcome-subtitle">Clique em qualquer lugar para continuar</div>
+        </div>
+    </div>
 
     <header>
         <a href="index.html" class="logo-link">
             <div class="logo">TECHVISION.</div>
         </a>
         
-        <!-- Botão do menu hambúrguer -->
         <button class="menu-toggle" id="menuToggle" aria-label="Menu">
             <span class="hamburger"></span>
         </button>
@@ -27,84 +35,155 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
         
-        <!-- Overlay para fechar o menu ao clicar fora -->
         <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
     <main>
         <section class="hero">
-            <h1>Arquitetando o Futuro</h1>
+            <h1>Arquitetando o <span style="background: linear-gradient(135deg, #00d2ff, #ff00c1); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Futuro</span></h1>
             <p>Design inteligente e tecnologia de alto impacto para transformar sua marca.</p>
             <div class="btn-container">
                 <a href="contato.html" class="btn-submit">Iniciar Projeto</a>
+                <a href="portfolio.html" class="btn-submit" style="background: linear-gradient(45deg, #00d2ff, #3a7bd5);">Ver Portfólio</a>
             </div>
         </section>
 
+        <!-- Dashboard de Estatísticas INTERATIVO -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Nossos Números</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card interactive-numbers" data-link="projetos.html">
+                    <div class="dashboard-icon">🚀</div>
+                    <div class="dashboard-number" data-target="150">0</div>
+                    <div class="dashboard-label">Projetos Entregues</div>
+                    <div class="number-hint">Clique para ver os projetos →</div>
+                </div>
+                <div class="dashboard-card interactive-numbers" data-link="clientes.html">
+                    <div class="dashboard-icon">😊</div>
+                    <div class="dashboard-number" data-target="98">0</div>
+                    <div class="dashboard-label">Clientes Satisfeitos</div>
+                    <div class="number-hint">Clique para ver depoimentos →</div>
+                </div>
+                <div class="dashboard-card interactive-numbers" data-link="paises.html">
+                    <div class="dashboard-icon">🌍</div>
+                    <div class="dashboard-number" data-target="25">0</div>
+                    <div class="dashboard-label">Países Atendidos</div>
+                    <div class="number-hint">Clique para ver os países →</div>
+                </div>
+                <div class="dashboard-card interactive-numbers" data-link="ideias.html">
+                    <div class="dashboard-icon">💡</div>
+                    <div class="dashboard-number" data-target="500">0</div>
+                    <div class="dashboard-label">Ideias Inovadoras</div>
+                    <div class="number-hint">Clique para ver ideias →</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diferenciais INTERATIVOS -->
         <section class="features">
             <h2 class="section-title">Nossos Diferenciais</h2>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card" data-detail="🚀 Inovação Constante: Trabalhamos com as tecnologias mais recentes do mercado, incluindo AI, Blockchain e IoT para criar soluções que antecipam as necessidades futuras.">
                     <div class="feature-icon">🚀</div>
                     <h3>Inovação Constante</h3>
                     <p>Soluções que antecipam as tendências do mercado digital.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" data-detail="🎨 Design Imersivo: Nossa abordagem de design combina psicologia das cores, animações fluidas e micro-interações que criam experiências memoráveis e aumentam a conversão.">
                     <div class="feature-icon">🎨</div>
                     <h3>Design Imersivo</h3>
                     <p>Experiências visuais que conectam e emocionam.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" data-detail="⚡ Performance: Sites com carregamento em menos de 2 segundos, otimização para SEO e código limpo seguindo as melhores práticas de desenvolvimento.">
                     <div class="feature-icon">⚡</div>
                     <h3>Performance</h3>
                     <p>Tecnologia otimizada para resultados excepcionais.</p>
                 </div>
+                <div class="feature-card" data-detail="🔒 Segurança: Proteção de dados com criptografia avançada, backups automáticos e monitoramento 24/7 contra ameaças cibernéticas.">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Segurança</h3>
+                    <p>Proteção de dados com as melhores práticas do mercado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos com atualização automática -->
+        <section class="testimonials-section">
+            <h2 class="section-title">O que dizem nossos clientes</h2>
+            <div class="testimonials-carousel">
+                <div class="testimonial-card active">
+                    <div class="testimonial-text">"A TechVision transformou completamente nossa presença digital. O trabalho é impecável e o atendimento excepcional!"</div>
+                    <div class="testimonial-author">— Ana Silva, CEO da InovaTech</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Profissionalismo e criatividade em cada entrega. Superaram todas as nossas expectativas."</div>
+                    <div class="testimonial-author">— Carlos Mendes, CMO da GrowthLab</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"A melhor agência de tecnologia com que já trabalhamos. Resultados incríveis e suporte de primeira."</div>
+                    <div class="testimonial-author">— Mariana Costa, Fundadora da EduTech</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Conseguiram entender exatamente nossa necessidade e entregaram um produto que superou todas as expectativas."</div>
+                    <div class="testimonial-author">— Roberto Alves, Diretor da TechSolutions</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Profissionais extremamente capacitados e comprometidos. Recomendo sem reservas!"</div>
+                    <div class="testimonial-author">— Fernanda Lima, CMO da BrandUp</div>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </section>
     </main>
 
     <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>TechVision</h4>
+                <p>Arquitetando o futuro com tecnologia e design de ponta.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contato</h4>
+                <p>contato@techvision.com</p>
+                <p>(11) 99999-9999</p>
+            </div>
+            <div class="footer-column">
+                <h4>Redes Sociais</h4>
+                <div class="social-links">
+                    <a href="https://facebook.com/techvision" target="_blank" rel="noopener noreferrer">📘</a>
+                    <a href="https://twitter.com/techvision" target="_blank" rel="noopener noreferrer">🐦</a>
+                    <a href="https://instagram.com/techvision" target="_blank" rel="noopener noreferrer">📷</a>
+                    <a href="https://linkedin.com/company/techvision" target="_blank" rel="noopener noreferrer">💼</a>
+                    <a href="https://github.com/techvision" target="_blank" rel="noopener noreferrer">🐙</a>
+                    <a href="https://youtube.com/techvision" target="_blank" rel="noopener noreferrer">📺</a>
+                </div>
+            </div>
+        </div>
         <p>&copy; 2026 TechVision Intelligence. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
-        // Menu hambúrguer
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        const navOverlay = document.getElementById('navOverlay');
-        
-        function toggleMenu() {
-            menuToggle.classList.toggle('active');
-            mainNav.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
-        }
-        
-        function closeMenu() {
-            menuToggle.classList.remove('active');
-            mainNav.classList.remove('active');
-            navOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        menuToggle.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', closeMenu);
-        
-        // Fechar menu ao clicar em um link
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-        
-        // Fechar menu ao redimensionar para desktop
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMenu();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
