@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="description" content="TechVision - Arquitetando o Futuro com design inteligente e tecnologia de alto impacto">
     <title>TechVision | Início</title>
     
@@ -14,11 +14,11 @@
 <body class="bg-fullscreen page-home">
 
     <!-- TELA DE BOAS-VINDAS -->
-    <div class="welcome-overlay" id="welcomeOverlay">
-        <div class="welcome-content">
-            <div class="welcome-logo">TECHVISION.</div>
-            <div class="welcome-title">Arquitetando o Futuro</div>
-            <div class="welcome-subtitle">Clique em qualquer lugar para continuar</div>
+    <div class="welcome-overlay" id="welcomeOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #0a0a2a, #000000); z-index: 9999; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+        <div class="welcome-content" style="text-align: center; animation: pulseGlow 1.5s ease infinite;">
+            <div class="welcome-logo" style="font-size: 5rem; font-weight: 800; background: linear-gradient(135deg, #00d2ff, #ff00c1, #00d2ff); background-size: 200% 200%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradientShift 2s ease infinite; margin-bottom: 1rem;">TECHVISION.</div>
+            <div class="welcome-title" style="font-size: 2rem; color: white; letter-spacing: 5px; margin-bottom: 1rem; opacity: 0; animation: fadeInUp 0.5s ease 0.3s forwards;">Arquitetando o Futuro</div>
+            <div class="welcome-subtitle" style="color: #00d2ff; font-size: 1rem; opacity: 0; animation: fadeInUp 0.5s ease 0.6s forwards;">Clique em qualquer lugar para continuar</div>
         </div>
     </div>
 
@@ -52,61 +52,61 @@
             <p>Design inteligente e tecnologia de alto impacto para transformar sua marca.</p>
             <div class="btn-container">
                 <a href="contato.html" class="btn-submit">Iniciar Projeto</a>
-                <a href="portfolio.html" class="btn-submit" style="background: linear-gradient(45deg, #00d2ff, #3a7bd5);">Ver Portfólio</a>
+                <a href="portfolio.html" class="btn-outline-primary">Ver Portfólio</a>
             </div>
         </section>
 
-        <!-- Dashboard de Estatísticas INTERATIVO -->
+        <!-- Dashboard de Estatísticas com animação de contador -->
         <section class="dashboard-section">
             <h2 class="section-title">Nossos Números</h2>
             <div class="dashboard-grid">
-                <div class="dashboard-card interactive-numbers" data-link="projetos.html">
+                <div class="dashboard-card" data-link="projetos.html">
                     <div class="dashboard-icon">🚀</div>
-                    <div class="dashboard-number" data-target="150">0</div>
+                    <div class="dashboard-number" data-target="150" data-speed="30">0</div>
                     <div class="dashboard-label">Projetos Entregues</div>
                     <div class="number-hint">Clique para ver os projetos →</div>
                 </div>
-                <div class="dashboard-card interactive-numbers" data-link="clientes.html">
+                <div class="dashboard-card" data-link="clientes.html">
                     <div class="dashboard-icon">😊</div>
-                    <div class="dashboard-number" data-target="98">0</div>
+                    <div class="dashboard-number" data-target="98" data-speed="25">0</div>
                     <div class="dashboard-label">Clientes Satisfeitos</div>
                     <div class="number-hint">Clique para ver depoimentos →</div>
                 </div>
-                <div class="dashboard-card interactive-numbers" data-link="paises.html">
+                <div class="dashboard-card" data-link="paises.html">
                     <div class="dashboard-icon">🌍</div>
-                    <div class="dashboard-number" data-target="25">0</div>
+                    <div class="dashboard-number" data-target="25" data-speed="20">0</div>
                     <div class="dashboard-label">Países Atendidos</div>
                     <div class="number-hint">Clique para ver os países →</div>
                 </div>
-                <div class="dashboard-card interactive-numbers" data-link="ideias.html">
+                <div class="dashboard-card" data-link="ideias.html">
                     <div class="dashboard-icon">💡</div>
-                    <div class="dashboard-number" data-target="500">0</div>
+                    <div class="dashboard-number" data-target="500" data-speed="40">0</div>
                     <div class="dashboard-label">Ideias Inovadoras</div>
                     <div class="number-hint">Clique para ver ideias →</div>
                 </div>
             </div>
         </section>
 
-        <!-- Diferenciais INTERATIVOS -->
+        <!-- Diferenciais com hover tooltip -->
         <section class="features">
             <h2 class="section-title">Nossos Diferenciais</h2>
             <div class="features-grid">
-                <div class="feature-card" data-detail="🚀 Inovação Constante: Trabalhamos com as tecnologias mais recentes do mercado, incluindo AI, Blockchain e IoT para criar soluções que antecipam as necessidades futuras.">
+                <div class="feature-card" data-title="🚀 Inovação Constante" data-desc="Trabalhamos com as tecnologias mais recentes do mercado, incluindo AI, Blockchain e IoT para criar soluções que antecipam as necessidades futuras. Nossa equipe está sempre atualizada com as últimas tendências do mercado.">
                     <div class="feature-icon">🚀</div>
                     <h3>Inovação Constante</h3>
                     <p>Soluções que antecipam as tendências do mercado digital.</p>
                 </div>
-                <div class="feature-card" data-detail="🎨 Design Imersivo: Nossa abordagem de design combina psicologia das cores, animações fluidas e micro-interações que criam experiências memoráveis e aumentam a conversão.">
+                <div class="feature-card" data-title="🎨 Design Imersivo" data-desc="Nossa abordagem de design combina psicologia das cores, animações fluidas e micro-interações que criam experiências memoráveis. Cada elemento é pensado para aumentar a conversão e engajamento do usuário.">
                     <div class="feature-icon">🎨</div>
                     <h3>Design Imersivo</h3>
                     <p>Experiências visuais que conectam e emocionam.</p>
                 </div>
-                <div class="feature-card" data-detail="⚡ Performance: Sites com carregamento em menos de 2 segundos, otimização para SEO e código limpo seguindo as melhores práticas de desenvolvimento.">
+                <div class="feature-card" data-title="⚡ Performance" data-desc="Sites com carregamento em menos de 2 segundos, otimização para SEO e código limpo seguindo as melhores práticas de desenvolvimento. Utilizamos técnicas avançadas de caching e CDN global.">
                     <div class="feature-icon">⚡</div>
                     <h3>Performance</h3>
                     <p>Tecnologia otimizada para resultados excepcionais.</p>
                 </div>
-                <div class="feature-card" data-detail="🔒 Segurança: Proteção de dados com criptografia avançada, backups automáticos e monitoramento 24/7 contra ameaças cibernéticas.">
+                <div class="feature-card" data-title="🔒 Segurança" data-desc="Proteção de dados com criptografia avançada, backups automáticos diários e monitoramento 24/7 contra ameaças cibernéticas. Certificados SSL gratuitos e proteção contra DDoS.">
                     <div class="feature-icon">🔒</div>
                     <h3>Segurança</h3>
                     <p>Proteção de dados com as melhores práticas do mercado.</p>
@@ -114,7 +114,7 @@
             </div>
         </section>
 
-        <!-- Depoimentos com atualização automática -->
+        <!-- Depoimentos -->
         <section class="testimonials-section">
             <h2 class="section-title">O que dizem nossos clientes</h2>
             <div class="testimonials-carousel">
@@ -172,12 +172,12 @@
             <div class="footer-column">
                 <h4>Redes Sociais</h4>
                 <div class="social-links">
-                    <a href="https://facebook.com/techvision" target="_blank" rel="noopener noreferrer">📘</a>
-                    <a href="https://twitter.com/techvision" target="_blank" rel="noopener noreferrer">🐦</a>
-                    <a href="https://instagram.com/techvision" target="_blank" rel="noopener noreferrer">📷</a>
-                    <a href="https://linkedin.com/company/techvision" target="_blank" rel="noopener noreferrer">💼</a>
-                    <a href="https://github.com/techvision" target="_blank" rel="noopener noreferrer">🐙</a>
-                    <a href="https://youtube.com/techvision" target="_blank" rel="noopener noreferrer">📺</a>
+                    <a href="#" onclick="showComingSoon(event, 'Facebook')">📘</a>
+                    <a href="#" onclick="showComingSoon(event, 'Twitter')">🐦</a>
+                    <a href="#" onclick="showComingSoon(event, 'Instagram')">📷</a>
+                    <a href="#" onclick="showComingSoon(event, 'LinkedIn')">💼</a>
+                    <a href="#" onclick="showComingSoon(event, 'GitHub')">🐙</a>
+                    <a href="#" onclick="showComingSoon(event, 'YouTube')">📺</a>
                 </div>
             </div>
         </div>
