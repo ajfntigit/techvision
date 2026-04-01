@@ -807,69 +807,293 @@ input:focus, select:focus, textarea:focus {
     transform: translateX(-5px);
 }
 
-/* Responsividade para dashboard.css */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+/* ===== RESPONSIVIDADE DASHBOARD ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
     
-    .btn-outline {
-        margin-left: 0;
-        margin-top: 1rem;
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .contact-modern-wrapper {
+        gap: 2rem;
+        margin: 100px auto 50px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .differentials-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .portfolio-filters {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+    
+    .portfolio-cta {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .portfolio-cta h3 {
+        font-size: 1.2rem;
     }
     
     .contact-modern-wrapper {
         grid-template-columns: 1fr;
-        margin-top: 100px;
+        gap: 1.5rem;
+        margin: 100px 0 50px;
+        padding: 0 5%;
+    }
+    
+    .contact-card-modern {
+        padding: 1.2rem;
+    }
+    
+    .contact-card-modern h2 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-info-item {
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+    
+    .contact-info-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .contact-info-text strong {
+        font-size: 0.9rem;
+    }
+    
+    .contact-info-text p {
+        font-size: 0.8rem;
+    }
+    
+    .social-links-modern {
+        justify-content: center;
+    }
+    
+    .social-link-modern {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
     
     .form-row {
         grid-template-columns: 1fr;
+        gap: 0;
     }
     
-    .services-grid,
-    .portfolio-grid,
-    .blog-grid {
-        grid-template-columns: 1fr;
+    .form-group {
+        margin-bottom: 0.8rem;
+    }
+    
+    label {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    input, select, textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .service-card {
+        padding: 1.2rem;
+    }
+    
+    .service-icon {
+        font-size: 2rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .service-features li {
+        font-size: 0.8rem;
+    }
+    
+    .differential-card {
+        padding: 1.2rem;
+    }
+    
+    .portfolio-image {
+        height: 120px;
+        font-size: 2.5rem;
+    }
+    
+    .portfolio-info {
+        padding: 1rem;
+    }
+    
+    .portfolio-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .portfolio-info p {
+        font-size: 0.85rem;
+    }
+    
+    .portfolio-tech span {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+    
+    .blog-image {
+        height: 120px;
+        font-size: 2.5rem;
+    }
+    
+    .blog-content {
+        padding: 1rem;
+    }
+    
+    .blog-category {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+    
+    .blog-content h3 {
+        font-size: 1rem;
+    }
+    
+    .blog-content p {
+        font-size: 0.85rem;
+    }
+    
+    .blog-meta {
+        font-size: 0.7rem;
+        gap: 0.8rem;
+    }
+    
+    .faq-question-modern {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer-modern {
+        font-size: 0.85rem;
+    }
+    
+    .faq-item-modern.active .faq-answer-modern {
+        padding: 0 1rem 1rem;
+    }
+    
+    .countries-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .country-card {
+        padding: 1rem;
+    }
+    
+    .country-flag {
+        font-size: 2rem;
+    }
+    
+    .country-name {
+        font-size: 1rem;
+    }
+    
+    .country-projects {
+        font-size: 0.8rem;
+    }
+    
+    .article-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .article-content {
+        padding: 1rem;
+    }
+    
+    .article-content h2 {
+        font-size: 1.1rem;
     }
     
     .dashboard-number {
         font-size: 2rem;
     }
-    
-    .differentials-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .portfolio-filters {
-        gap: 0.5rem;
-    }
-    
-    .filter-btn {
-        padding: 6px 16px;
-        font-size: 0.9rem;
-    }
 }
 
+/* Mobile pequeno */
 @media (max-width: 480px) {
     .portfolio-filters {
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
     
     .filter-btn {
-        padding: 5px 12px;
-        font-size: 0.8rem;
+        padding: 4px 10px;
+        font-size: 0.7rem;
     }
     
     .portfolio-cta h3 {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
     
-    .portfolio-cta {
-        padding: 1.5rem;
+    .portfolio-cta p {
+        font-size: 0.8rem;
     }
     
-    .article-content {
-        padding: 1.25rem;
+    .btn-service {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .countries-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-info-icon {
+        margin: 0 auto;
     }
 }
