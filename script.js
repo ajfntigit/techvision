@@ -31,7 +31,7 @@ window.addEventListener('resize', function() {
     }
 });
 
-// ===== TELA DE BOAS-VINDAS CORRIGIDA COM LOGS =====
+// ===== TELA DE BOAS-VINDAS - APENAS NA PRIMEIRA VISITA =====
 const welcomeOverlay = document.getElementById('welcomeOverlay');
 
 function hideWelcomeScreen() {
@@ -44,29 +44,116 @@ function hideWelcomeScreen() {
             welcomeOverlay.style.display = 'none';
             console.log('✅ Tela de boas-vindas removida com sucesso');
         }, 1000);
-    } else {
-        console.log('❌ ERRO: Elemento welcomeOverlay não encontrado no DOM');
     }
 }
 
+// Verifica se já viu a tela de boas-vindas nesta sessão
 if (welcomeOverlay) {
-    console.log('🎉 Tela de boas-vindas encontrada! Iniciando timer de 4 segundos...');
-    
-    // Timer de 4 segundos para esconder automaticamente
-    const autoHideTimer = setTimeout(() => {
-        console.log('⏰ Timer de 4 segundos concluído');
-        hideWelcomeScreen();
-    }, 4000);
-    
-    // Também esconde ao clicar
-    welcomeOverlay.addEventListener('click', () => {
-        console.log('🖱️ Clique detectado na tela de boas-vindas');
-        clearTimeout(autoHideTimer);
-        hideWelcomeScreen();
-    });
+    // Usa sessionStorage para controlar se já viu na sessão atual
+    if (!sessionStorage.getItem('welcomeSeen')) {
+        console.log('🎉 Primeira visita - exibindo tela de boas-vindas!');
+        sessionStorage.setItem('welcomeSeen', 'true');
+        
+        // Timer de 4 segundos para esconder automaticamente
+        const autoHideTimer = setTimeout(() => {
+            console.log('⏰ Timer de 4 segundos concluído');
+            hideWelcomeScreen();
+        }, 4000);
+        
+        // Também esconde ao clicar
+        welcomeOverlay.addEventListener('click', () => {
+            console.log('🖱️ Clique detectado na tela de boas-vindas');
+            clearTimeout(autoHideTimer);
+            hideWelcomeScreen();
+        });
+    } else {
+        // Já viu a tela nesta sessão, esconde imediatamente
+        console.log('👋 Usuário já viu a tela de boas-vindas nesta sessão - ocultando');
+        welcomeOverlay.style.display = 'none';
+    }
 } else {
-    console.log('❌ ERRO CRÍTICO: Elemento welcomeOverlay não existe no DOM!');
-    console.log('Verifique se o elemento com id="welcomeOverlay" está presente no HTML');
+    console.log('❌ ERRO: Elemento welcomeOverlay não encontrado no DOM');
+}
+
+// ===== BOTÃO FLUTUANTE DO WHATSAPP =====
+function createWhatsAppButton() {
+    // Verifica se o botão já existe para não duplicar
+    if (document.getElementById('whatsappButton')) return;
+    
+    // Cria o botão flutuante
+    const whatsappBtn = document.createElement('a');
+    whatsappBtn.id = 'whatsappButton';
+    whatsappBtn.href = 'https://wa.me/5551999190018?text=Olá!%20Vim%20pelo%20site%20TechVision%20e%20gostaria%20de%20mais%20informações.';
+    whatsappBtn.target = '_blank';
+    whatsappBtn.rel = 'noopener noreferrer';
+    whatsappBtn.innerHTML = '💬';
+    whatsappBtn.setAttribute('aria-label', 'WhatsApp');
+    
+    // Estilos do botão
+    whatsappBtn.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        text-decoration: none;
+        box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: pulseWhatsApp 1.5s ease infinite;
+    `;
+    
+    // Efeito hover
+    whatsappBtn.addEventListener('mouseenter', () => {
+        whatsappBtn.style.transform = 'scale(1.1)';
+        whatsappBtn.style.boxShadow = '0 8px 25px rgba(37, 211, 102, 0.6)';
+    });
+    
+    whatsappBtn.addEventListener('mouseleave', () => {
+        whatsappBtn.style.transform = 'scale(1)';
+        whatsappBtn.style.boxShadow = '0 5px 20px rgba(37, 211, 102, 0.4)';
+    });
+    
+    document.body.appendChild(whatsappBtn);
+    
+    // Adiciona animação CSS se não existir
+    if (!document.querySelector('#whatsappAnimationStyle')) {
+        const style = document.createElement('style');
+        style.id = 'whatsappAnimationStyle';
+        style.textContent = `
+            @keyframes pulseWhatsApp {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+                }
+                50% {
+                    transform: scale(1.1);
+                    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7);
+                }
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    console.log('💬 Botão do WhatsApp adicionado com animação de pulso!');
+}
+
+// Aguarda o DOM carregar para adicionar o botão
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createWhatsAppButton);
+} else {
+    createWhatsAppButton();
 }
 
 // ===== ANIMAÇÃO DOS NÚMEROS =====
@@ -224,12 +311,6 @@ if (filterBtns.length > 0) {
 }
 
 // ===== PROJETOS DO PORTFÓLIO COM IA - MODAL CORRIGIDO =====
-function closeModal(modalElement) {
-    if (modalElement && modalElement.remove) {
-        modalElement.remove();
-    }
-}
-
 function showProjectDetails(event, projectId) {
     event.preventDefault();
     
@@ -274,7 +355,6 @@ function showProjectDetails(event, projectId) {
     
     const project = projects[projectId];
     if (project) {
-        // Criar o modal
         const modal = document.createElement('div');
         modal.id = 'projectModal';
         modal.style.cssText = `
@@ -292,7 +372,6 @@ function showProjectDetails(event, projectId) {
             animation: fadeIn 0.3s ease;
         `;
         
-        // Criar o conteúdo do modal
         const modalContent = document.createElement('div');
         modalContent.style.cssText = `
             background: var(--glass);
@@ -322,26 +401,22 @@ function showProjectDetails(event, projectId) {
         modal.appendChild(modalContent);
         document.body.appendChild(modal);
         
-        // Função para fechar o modal
         const closeModalFunction = () => {
             modal.remove();
             document.body.style.overflow = '';
         };
         
-        // Fechar ao clicar no botão
         const closeBtn = modalContent.querySelector('#closeModalBtn');
         if (closeBtn) {
             closeBtn.addEventListener('click', closeModalFunction);
         }
         
-        // Fechar ao clicar no overlay (fora do conteúdo)
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModalFunction();
             }
         });
         
-        // Fechar ao pressionar ESC
         const escHandler = (e) => {
             if (e.key === 'Escape') {
                 closeModalFunction();
@@ -532,7 +607,6 @@ function showArticle(event, articleId) {
         modal.appendChild(modalContent);
         document.body.appendChild(modal);
         
-        // Fechar modal
         const closeBtn = modalContent.querySelector('#closeArticleBtn');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => modal.remove());
@@ -656,4 +730,4 @@ style.textContent = `
 document.head.appendChild(style);
 
 console.log('🚀 TechVision - Site carregado com sucesso!');
-console.log('📱 Versão: 2.0 - Com tela de boas-vindas corrigida');
+console.log('📱 Versão: 3.0 - Com WhatsApp Flutuante e controle de boas-vindas');
