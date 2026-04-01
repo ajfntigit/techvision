@@ -31,33 +31,42 @@ window.addEventListener('resize', function() {
     }
 });
 
-// ===== TELA DE BOAS-VINDAS CORRIGIDA =====
+// ===== TELA DE BOAS-VINDAS CORRIGIDA COM LOGS =====
 const welcomeOverlay = document.getElementById('welcomeOverlay');
 
 function hideWelcomeScreen() {
     if (welcomeOverlay) {
-        // Aplica fade out
+        console.log('🎬 Escondendo tela de boas-vindas');
         welcomeOverlay.style.transition = 'opacity 1s ease';
         welcomeOverlay.style.opacity = '0';
         
-        // Remove após a animação
         setTimeout(() => {
             welcomeOverlay.style.display = 'none';
+            console.log('✅ Tela de boas-vindas removida com sucesso');
         }, 1000);
+    } else {
+        console.log('❌ ERRO: Elemento welcomeOverlay não encontrado no DOM');
     }
 }
 
 if (welcomeOverlay) {
+    console.log('🎉 Tela de boas-vindas encontrada! Iniciando timer de 4 segundos...');
+    
     // Timer de 4 segundos para esconder automaticamente
     const autoHideTimer = setTimeout(() => {
+        console.log('⏰ Timer de 4 segundos concluído');
         hideWelcomeScreen();
     }, 4000);
     
     // Também esconde ao clicar
     welcomeOverlay.addEventListener('click', () => {
-        clearTimeout(autoHideTimer); // Cancela o timer se clicou antes
+        console.log('🖱️ Clique detectado na tela de boas-vindas');
+        clearTimeout(autoHideTimer);
         hideWelcomeScreen();
     });
+} else {
+    console.log('❌ ERRO CRÍTICO: Elemento welcomeOverlay não existe no DOM!');
+    console.log('Verifique se o elemento com id="welcomeOverlay" está presente no HTML');
 }
 
 // ===== ANIMAÇÃO DOS NÚMEROS =====
@@ -647,3 +656,4 @@ style.textContent = `
 document.head.appendChild(style);
 
 console.log('🚀 TechVision - Site carregado com sucesso!');
+console.log('📱 Versão: 2.0 - Com tela de boas-vindas corrigida');
