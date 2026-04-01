@@ -1,273 +1,193 @@
-// Menu Hambúrguer
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-const navOverlay = document.getElementById('navOverlay');
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Portfólio de projetos da TechVision - Conheça nossos trabalhos em desenvolvimento web, mobile e design">
+    <title>Portfólio | TechVision</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2300d2ff'/%3E%3Ctext x='50' y='72' font-size='55' text-anchor='middle' fill='white'%3E📁%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="bg-fullscreen page-portfolio">
 
-function toggleMenu() {
-    menuToggle?.classList.toggle('active');
-    mainNav?.classList.toggle('active');
-    navOverlay?.classList.toggle('active');
-    document.body.style.overflow = mainNav?.classList.contains('active') ? 'hidden' : '';
-}
+    <header>
+        <a href="index.html" class="logo-link"><div class="logo">TECHVISION.</div></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span class="hamburger"></span></button>
+        <nav id="mainNav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="nav-overlay" id="navOverlay"></div>
+    </header>
 
-function closeMenu() {
-    menuToggle?.classList.remove('active');
-    mainNav?.classList.remove('active');
-    navOverlay?.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-menuToggle?.addEventListener('click', toggleMenu);
-navOverlay?.addEventListener('click', closeMenu);
-
-const navLinks = document.querySelectorAll('nav ul li a');
-navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-});
-
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 768) {
-        closeMenu();
-    }
-});
-
-// ===== TELA DE BOAS-VINDAS =====
-const welcomeOverlay = document.getElementById('welcomeOverlay');
-if (welcomeOverlay) {
-    // Verificar se já viu a tela de boas-vindas nesta sessão
-    if (!sessionStorage.getItem('welcomeSeen')) {
-        sessionStorage.setItem('welcomeSeen', 'true');
-        setTimeout(() => {
-            welcomeOverlay.style.opacity = '0';
-            setTimeout(() => {
-                welcomeOverlay.style.display = 'none';
-            }, 500);
-        }, 3000);
+    <main style="padding: 120px 8% 50px;">
+        <h1 class="page-title">Nosso Portfólio</h1>
+        <p class="page-subtitle">Conheça alguns dos projetos que desenvolvemos</p>
         
-        welcomeOverlay.addEventListener('click', () => {
-            welcomeOverlay.style.opacity = '0';
-            setTimeout(() => {
-                welcomeOverlay.style.display = 'none';
-            }, 500);
-        });
-    } else {
-        welcomeOverlay.style.display = 'none';
-    }
-}
-
-// ===== ANIMAÇÃO DOS NÚMEROS DO DASHBOARD =====
-const numbers = document.querySelectorAll('.dashboard-number');
-
-function animateNumber(element) {
-    const target = parseInt(element.getAttribute('data-target'));
-    let current = 0;
-    const increment = target / 50;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 30);
-}
-
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const number = entry.target;
-            animateNumber(number);
-            observer.unobserve(number);
-        }
-    });
-}, observerOptions);
-
-numbers.forEach(number => {
-    observer.observe(number);
-});
-
-// ===== NÚMEROS INTERATIVOS =====
-const interactiveNumbers = document.querySelectorAll('.interactive-numbers');
-interactiveNumbers.forEach(card => {
-    card.addEventListener('click', () => {
-        const link = card.getAttribute('data-link');
-        if (link) {
-            window.location.href = link;
-        }
-    });
-});
-
-// ===== DIFERENCIAIS INTERATIVOS =====
-const featureCards = document.querySelectorAll('.feature-card');
-let activeDetail = null;
-
-featureCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const detailText = card.getAttribute('data-detail');
-        if (detailText) {
-            if (activeDetail) {
-                activeDetail.remove();
-                activeDetail = null;
-            }
+        <!-- Filtros -->
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">✨ Todos</button>
+            <button class="filter-btn" data-filter="web">🌐 Web</button>
+            <button class="filter-btn" data-filter="mobile">📱 Mobile</button>
+            <button class="filter-btn" data-filter="design">🎨 Design</button>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-image">🌐</div>
+                <div class="portfolio-info">
+                    <h3>E-commerce Fashion</h3>
+                    <p>Plataforma de vendas completa com integração de pagamentos e gestão de estoque.</p>
+                    <div class="portfolio-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <span class="portfolio-tag">Web Development</span>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="#" onclick="showProjectDetails(event, 'ecommerce-fashion')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                    </div>
+                </div>
+            </div>
             
-            const detailDiv = document.createElement('div');
-            detailDiv.className = 'feature-detail';
-            const [title, ...descParts] = detailText.split(':');
-            detailDiv.innerHTML = `
-                <h4>${title}</h4>
-                <p>${descParts.join(':')}</p>
-            `;
-            document.body.appendChild(detailDiv);
-            activeDetail = detailDiv;
+            <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-image">📱</div>
+                <div class="portfolio-info">
+                    <h3>App Fitness Tracker</h3>
+                    <p>Aplicativo para monitoramento de atividades físicas com gamificação e integração com wearables.</p>
+                    <div class="portfolio-tech">
+                        <span>React Native</span>
+                        <span>Firebase</span>
+                    </div>
+                    <span class="portfolio-tag">Mobile App</span>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="#" onclick="showProjectDetails(event, 'fitness-tracker')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                    </div>
+                </div>
+            </div>
             
-            setTimeout(() => {
-                if (activeDetail === detailDiv) {
-                    detailDiv.remove();
-                    activeDetail = null;
-                }
-            }, 5000);
-        }
-    });
-});
-
-document.addEventListener('click', (e) => {
-    if (activeDetail && !activeDetail.contains(e.target) && !e.target.closest('.feature-card')) {
-        activeDetail.remove();
-        activeDetail = null;
-    }
-});
-
-// ===== CARROSSEL DE DEPOIMENTOS =====
-let currentTestimonial = 0;
-const testimonials = document.querySelectorAll('.testimonial-card');
-const dots = document.querySelectorAll('.dot');
-
-function showTestimonial(index) {
-    if (testimonials.length === 0) return;
-    testimonials.forEach((t, i) => {
-        t.classList.toggle('active', i === index);
-    });
-    dots.forEach((d, i) => {
-        d.classList.toggle('active', i === index);
-    });
-}
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentTestimonial = index;
-        showTestimonial(currentTestimonial);
-    });
-});
-
-if (testimonials.length > 1) {
-    setInterval(() => {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(currentTestimonial);
-    }, 6000);
-}
-
-// ===== FILTROS DO PORTFÓLIO =====
-const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-if (filterBtns.length > 0) {
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filter = btn.getAttribute('data-filter');
+            <div class="portfolio-item" data-category="design">
+                <div class="portfolio-image">🎨</div>
+                <div class="portfolio-info">
+                    <h3>Design System Bank</h3>
+                    <p>Sistema de design completo para instituição financeira com mais de 200 componentes.</p>
+                    <div class="portfolio-tech">
+                        <span>Figma</span>
+                        <span>Storybook</span>
+                        <span>React</span>
+                    </div>
+                    <span class="portfolio-tag">UI/UX Design</span>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="#" onclick="showProjectDetails(event, 'design-system')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                    </div>
+                </div>
+            </div>
             
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-image">🏥</div>
+                <div class="portfolio-info">
+                    <h3>Plataforma de Telemedicina</h3>
+                    <p>Sistema para consultas online com agendamento, prontuário digital e videoconferência.</p>
+                    <div class="portfolio-tech">
+                        <span>Vue.js</span>
+                        <span>Django</span>
+                        <span>WebRTC</span>
+                    </div>
+                    <span class="portfolio-tag">Web Development</span>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="#" onclick="showProjectDetails(event, 'telemedicina')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                    </div>
+                </div>
+            </div>
             
-            portfolioItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                    item.style.animation = 'fadeInUp 0.5s ease';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-}
-
-// ===== FAQ ACCORDION MODERNIZADO =====
-const faqItems = document.querySelectorAll('.faq-item-modern');
-
-faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question-modern');
-    if (question) {
-        question.addEventListener('click', () => {
-            item.classList.toggle('active');
-        });
-    }
-});
-
-// ===== FORMULÁRIO DE CONTATO =====
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.onsubmit = function(e) {
-        e.preventDefault();
+            <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-image">🍽️</div>
+                <div class="portfolio-info">
+                    <h3>App Delivery Food</h3>
+                    <p>Aplicativo de entregas com rastreamento em tempo real e sistema de avaliação.</p>
+                    <div class="portfolio-tech">
+                        <span>Flutter</span>
+                        <span>Node.js</span>
+                        <span>Socket.io</span>
+                    </div>
+                    <span class="portfolio-tag">Mobile App</span>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="#" onclick="showProjectDetails(event, 'delivery-food')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="design">
+                <div class="portfolio-image">🎮</div>
+                <div class="portfolio-info">
+                    <h3>Landing Page Gaming</h3>
+                    <p>Site interativo com animações, efeitos 3D e performance otimizada.</p>
+                    <div class="portfolio-tech">
+                        <span>Three.js</span>
+                        <span>GSAP</span>
+                        <span>Tailwind</span>
+                    </div>
+                    <span class="portfolio-tag">Web Design</span>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="#" onclick="showProjectDetails(event, 'gaming-landing')" class="btn-service" style="display: inline-block;">Ver Projeto →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        const nome = document.getElementById('nome')?.value.trim();
-        const email = document.getElementById('email')?.value.trim();
-        const assunto = document.getElementById('assunto')?.value;
-        const mensagem = document.getElementById('mensagem')?.value.trim();
-        
-        if (!nome || !email || !assunto || !mensagem) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
-            return;
-        }
-        
-        const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Por favor, insira um e-mail válido.');
-            return;
-        }
-        
-        const toast = document.createElement('div');
-        toast.className = 'toast-message';
-        toast.textContent = '✓ Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.';
-        document.body.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.remove();
-        }, 4000);
-        
-        this.reset();
-    };
-}
+        <!-- CTA ao final -->
+        <div class="portfolio-cta">
+            <h3>Quer um projeto como esses?</h3>
+            <p>Entre em contato e vamos transformar sua ideia em realidade!</p>
+            <a href="contato.html" class="btn-submit">Solicitar Orçamento</a>
+        </div>
+    </main>
 
-// ===== SCROLL SMOOTH =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && href !== '' && href !== '/') {
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    });
-});
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>TechVision</h4>
+                <p>Arquitetando o futuro com tecnologia e design de ponta.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contato</h4>
+                <p>contato@techvision.com</p>
+                <p>(11) 99999-9999</p>
+            </div>
+            <div class="footer-column">
+                <h4>Redes Sociais</h4>
+                <div class="social-links">
+                    <a href="#" onclick="showComingSoon(event, 'Facebook')">📘</a>
+                    <a href="#" onclick="showComingSoon(event, 'Twitter')">🐦</a>
+                    <a href="#" onclick="showComingSoon(event, 'Instagram')">📷</a>
+                    <a href="#" onclick="showComingSoon(event, 'LinkedIn')">💼</a>
+                    <a href="#" onclick="showComingSoon(event, 'GitHub')">🐙</a>
+                    <a href="#" onclick="showComingSoon(event, 'YouTube')">📺</a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2026 TechVision Intelligence. Todos os direitos reservados.</p>
+    </footer>
 
-// ===== HEADER SCROLL EFFECT =====
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (header) {
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(5, 5, 10, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.background = 'rgba(5, 5, 10, 0.9)';
-        }
-    }
-});
-
-console.log('🚀 TechVision - Site carregado com sucesso!');
+    <script src="script.js"></script>
+</body>
+</html>
